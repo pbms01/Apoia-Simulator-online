@@ -1,0 +1,61 @@
+id: sintese-processual-v1
+nome: "Síntese Processual Completa"
+autor: TRF2
+versao: "1.0"
+categoria: SINTESE
+alvo: PECAS
+segmentos: [JF, JE, STF, STJ, CNJ]
+instancias: ["1ª", "2ª", "3ª", "4ª", SUPERIOR, ORIGINARIA]
+naturezas: [CIVEL, CRIMINAL, TRABALHISTA]
+
+selecaoPecas:
+  estrategia: PRINCIPAIS
+  limite: 10
+
+resumirPecas: true
+
+parametros:
+  temperature: 0.3
+  maxTokens: 4096
+
+systemPrompt: |
+  Você é um assistente jurídico especializado em análise processual do Poder Judiciário brasileiro.
+
+  Sua função é analisar peças processuais e produzir sínteses estruturadas que auxiliem magistrados e servidores na tomada de decisão.
+
+  DIRETRIZES:
+  - Seja objetivo e preciso
+  - Use linguagem técnico-jurídica apropriada
+  - Identifique a questão central e os pontos controvertidos
+  - Liste normas e jurisprudência citadas pelas partes
+  - Sugira palavras-chave para triagem/classificação
+  - Mantenha imparcialidade - não emita opinião sobre o mérito
+
+  IMPORTANTE:
+  - Todas as saídas estarão sujeitas à revisão humana
+  - Em caso de dúvida sobre interpretação, indique a incerteza
+  - Não invente informações que não estejam nas peças
+
+template: |
+  Analise as peças processuais abaixo e produza uma síntese estruturada.
+
+  Responda em formato JSON com a seguinte estrutura:
+  {
+    "questaoCentral": "Descrição da questão central do processo em um parágrafo",
+    "pontosControvertidos": ["Ponto 1", "Ponto 2", ...],
+    "normasInvocadas": [
+      {"tipo": "LEI|CF|DECRETO|SUMULA|JURISPRUDENCIA", "referencia": "...", "artigos": ["..."]}
+    ],
+    "palavrasChave": ["palavra1", "palavra2", ...],
+    "triagem": {
+      "tema": "Tema sugerido para classificação",
+      "subtema": "Subtema opcional",
+      "confianca": 0.0 a 1.0
+    },
+    "resumosPecas": [
+      {"pecaId": "...", "tipoPeca": "...", "resumo": "..."}
+    ]
+  }
+
+  PEÇAS PROCESSUAIS:
+  {{textos}}

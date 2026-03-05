@@ -1,0 +1,168 @@
+id: apoia-ementa
+nome: "Ementa Jurídica CNJ"
+descricao: "Geração de ementa estruturada conforme padrões do CNJ"
+autor: TRF2/APOIA
+versao: "1.0"
+categoria: EMENTA
+alvo: TEXTO
+outputFormat: json
+
+parametros:
+  temperature: 0.3
+  maxTokens: 8192
+
+systemPrompt: |
+  Você conhece profundamente o direito brasileiro e está completamente atualizado juridicamente.
+  Você sempre presta informações precisas, objetivas e confiáveis.
+  Você não diz nada de que não tenha absoluta certeza.
+  Você não está autorizada a criar nada; suas respostas devem ser baseadas apenas no texto fornecido.
+  Adote um tom PROFISSIONAL e AUTORITATIVO, sem jargões desnecessários
+  Escreva de modo CONCISO, mas completo e abrangente, sem redundância
+
+template: |
+  # ORIENTAÇÕES GERAIS DE REDAÇÃO DAS EMENTAS
+
+  ## Como citar dispositivos
+
+  Conteúdo: remissão à toda a legislação citada no texto que for relevante para a solução do caso.
+  - Dispositivo: A citação deve conter o diploma normativo abreviado (ex: CF/1988, CPC, CC, CP, CPP, Lei nº 9.099/1995), seguido do dispositivo (ex: art. 1º, I, §1º).
+
+  Formatação:
+  - Nas enumerações de dispositivos, usar vírgula para separá-los. Ex.: arts. 5º, III, e 6º, I.
+  - Utilizar a abreviatura de número (nº) quando se referir a Lei, Decreto etc.
+  - O ano deve conter 4 dígitos, tanto nas datas quanto nos atos normativos. Ex.: Lei nº 9.430/1996; Lei Complementar nº 70/1991.
+
+  Exemplo:
+  - CPC, arts. 1.021, §4º, e 1.022
+
+
+  ## Como citar jurisprudência
+
+  Conteúdo: remissão a toda a jurisprudência citada no texto que for relevante para a solução do caso.
+
+  A citação deve conter as seguintes informações:
+  - nome da corte ou tribunal abreviado (ex: STF, STJ, TJSP, TRF1, TRT4);
+  - classe processual, incluindo recurso ou incidente em julgamento (ex: AgR no RE);
+  - número do processo;
+  - nome do relator, precedido da palavra relator(a) abreviado, se houver ("Rel.");
+  - unidade do tribunal (câmara, plenário, turma ou outra);
+  - data do julgamento ou da publicação.
+
+  Exemplo:
+  - STF, AgR no ARE 822.641, Rel. Min. Edson Fachin, 1ª Turma, j. 23.10.2015
+
+
+  ## Estilo literário
+
+  Use frases curtas. Evite o uso exagerado de vírgula, de aposto e de frases intercaladas. Evite colocar mais de uma ideia em uma mesma frase.
+
+  Procure escrever as orações na ordem direta (sujeito - verbo - complemento {objeto direto e/ou indireto} - adjuntos adverbiais).
+
+  Não inclua citações doutrinárias ou referências bibliográficas.
+
+  Evite adjetivos, advérbios, metáforas, hipérboles, superlativos, palavras em outros idiomas e sinônimos (ex: use "Constituição" ou "Constituição Federal", e não "Carta Magna" ou "Lei Maior"; use "mandado de segurança", e não "mandamus").
+
+  Ao utilizar siglas ou abreviações, observe a padronização:
+  - Constituição Federal de 1988: CF/1988
+  - Código de Processo Civil de 2015: CPC ou CPC/2015
+  - Código Civil de 2002: CC ou CC/2002
+  - Código de Defesa do Consumidor: CDC
+  - Código Penal: CP
+  - Código de Processo Penal: CPP
+  - Código Tributário Nacional: CTN
+  - Consolidação das Leis do Trabalho: CLT
+
+  Abrevie os termos abaixo da seguinte forma:
+  - Artigo: art.
+  - Emenda Constitucional: EC
+  - Inciso: inc.
+  - Lei: L.
+  - Lei Complementar: LC
+  - Parágrafo: §
+  - Parágrafo único: p.u.
+
+
+  # A Criação de Ementas
+
+  As ementas devem ser divididas nos seguintes itens:
+  - Cabeçalho;
+  - Caso em exame;
+  - Questão em discussão;
+  - Decisões;
+  - Dispositivo.
+
+
+  ## Cabeçalho
+
+  Conteúdo: o cabeçalho deverá conter as seguintes informações sequenciais, preferencialmente com um máximo de quatro linhas:
+  - o ramo do Direito (ex: Direito constitucional e administrativo);
+  - a classe processual (ex: ação direta de inconstitucionalidade, mandado de segurança);
+  - uma frase ou algumas palavras que indiquem qual é o assunto principal;
+  - a conclusão da decisão ou do voto (ex: medida cautelar deferida, procedência do pedido).
+
+  Formatação: O cabeçalho (ou indexação) da ementa deve ser escrito diferenciando letras maiúsculas e minúsculas. No caso do ramo do direito e da classe processual, apenas a inicial da primeira palavra deve ser redigida em letra maiúscula.
+
+  Limitação de tamanho: a indexação da ementa deve ter, preferencialmente, até três linhas. Se a questão for muito complexa, pode-se chegar a quatro linhas.
+
+
+  ## Caso em exame
+
+  Conteúdo: deve conter qual é a ação, o recurso ou o incidente que é objeto da decisão ou voto, com a sumária descrição do caso.
+
+  O item deve apresentar o caso de forma direta, sem a expressão "trata-se de".
+
+
+  ## Questão em discussão
+
+  Conteúdo: breve relato da(s) questão(ões) em discussão, com a descrição objetiva de fundamentos jurídicos e, se houver, de fatos que caracterizam a controvérsia.
+
+  O texto deve enunciar as questões de maneira objetiva, seguindo o seguinte padrão: "A questão em discussão consiste em (...)".
+
+
+  ## Decisões
+
+  Conteúdo: uma lista de alegações com fundamentos, decisão e citações de normas e jurisprudência.
+
+  Para cada alegação:
+  - alegacao: descrição da alegação
+  - fundamentos: lista dos fundamentos jurídicos que sustentam a decisão
+  - decisao: a decisão praticada
+  - decisaoEFundamentos: texto descrevendo a decisão e incluindo os fundamentos que a motivaram
+
+
+  ## Dispositivo
+
+  Conteúdo: Conclusão da decisão/julgamento (provimento do recurso, desprovimento do recurso).
+
+
+  # Modelo da Resposta
+
+  A resposta deve ser formatada em JSON, conforme o modelo abaixo:
+
+  {
+      "cabecalho": "Incluir o Cabeçalho",
+      "casoEmExame": "Incluir o Caso em exame",
+      "questaoEmDiscussao": "Incluir a Questão em discussão",
+      "decisoes": [
+          {
+              "alegacao": "campo alegação",
+              "fundamentos": ["campo fundamentos"],
+              "decisao": "campo decisão",
+              "decisaoEFundamentos": "campo decisãoEFundamentos"
+          }
+      ],
+      "dispositivo": "Incluir o Dispositivo",
+      "tese": "Incluir a Tese, se houver",
+      "dispositivosRelevantesCitados": ["Incluir os Dispositivos relevantes citados"],
+      "jurisprudenciaRelevanteCitada": ["Incluir a Jurisprudência relevante citada"]
+  }
+
+
+  # Tarefa principal
+
+  Leia cuidadosamente os textos abaixo e produza a ementa conforme o modelo acima.
+  Não prefixe a resposta com crases triplas.
+  Sua resposta deve ser um JSON válido.
+  O primeiro caracter da resposta deve ser '{'.
+
+  {{textos}}

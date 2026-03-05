@@ -1,0 +1,105 @@
+{
+  "numeroProcesso": "5009265-28.2021.4.02.5101",
+  "classeProcessual": "Recurso Inominado Cível",
+  "codigoClasse": 436,
+  "assuntos": [
+    {
+      "codigo": 6105,
+      "descricao": "Aposentadoria por Idade (Art. 48/51)",
+      "principal": true
+    }
+  ],
+  "dataAjuizamento": "2021-09-09",
+  "orgaoJulgador": {
+    "codigo": 1234,
+    "nome": "1ª Turma Recursal do Rio de Janeiro"
+  },
+  "partes": [
+    {
+      "nome": "Maria da Conceição Rodrigues",
+      "polo": "ATIVO",
+      "tipoPessoa": "FISICA",
+      "documento": "123.456.789-00",
+      "advogados": [
+        {
+          "nome": "João da Silva Santos",
+          "oab": "OAB/RJ 123456"
+        }
+      ]
+    },
+    {
+      "nome": "Instituto Nacional do Seguro Social - INSS",
+      "polo": "PASSIVO",
+      "tipoPessoa": "JURIDICA",
+      "documento": "29.979.036/0001-40"
+    }
+  ],
+  "pecas": [
+    {
+      "id": "PET1",
+      "codigo": "PET1",
+      "tipo": "PETIÇÃO INICIAL",
+      "conteudo": "A autora, trabalhadora rural, nascida em 15/03/1965, requer a concessão de aposentadoria por idade rural. Alega ter exercido atividade rural em regime de economia familiar desde a adolescência na propriedade de seus pais no Município de Itaperuna/RJ.\n\nApresenta como início de prova material: certidão de casamento constando profissão de lavrador do cônjuge (1985), notas fiscais de produtor rural (1990-2010), declaração do Sindicato dos Trabalhadores Rurais de Itaperuna.\n\nO INSS indeferiu o benefício administrativamente alegando falta de comprovação da qualidade de segurado especial no período imediatamente anterior ao requerimento.\n\nRequer: a) concessão de tutela antecipada para implantação imediata do benefício; b) no mérito, a concessão de aposentadoria por idade rural desde a DER (01/06/2021); c) pagamento das parcelas vencidas com correção monetária e juros.",
+      "dataJuntada": "2021-09-09",
+      "numeroPaginas": 12,
+      "nivelSigilo": 0
+    },
+    {
+      "id": "CONT1",
+      "codigo": "CONT",
+      "tipo": "CONTESTAÇÃO",
+      "conteudo": "O INSS contesta o pedido alegando que a parte autora não comprovou o efetivo exercício da atividade rural no período de carência.\n\nDestaca que o CNIS apresenta vínculos urbanos nos períodos de 2008 a 2012, o que descaracteriza a condição de segurado especial.\n\nAduz que a autodeclaração e os documentos apresentados são insuficientes para comprovar o exercício contínuo da atividade rural pelo período exigido em lei (180 meses).\n\nRequer a improcedência dos pedidos.",
+      "dataJuntada": "2021-11-15",
+      "numeroPaginas": 8,
+      "nivelSigilo": 0
+    },
+    {
+      "id": "SENT1",
+      "codigo": "SENT",
+      "tipo": "SENTENÇA",
+      "conteudo": "SENTENÇA\n\nTrata-se de ação previdenciária visando à concessão de aposentadoria por idade rural.\n\nA autora comprovou idade mínima de 55 anos. Quanto ao exercício de atividade rural, apresentou início de prova material consistente em certidão de casamento (1985) e notas de produtor rural.\n\nNo entanto, o CNIS demonstra que a autora manteve vínculos empregatícios urbanos entre 2008 e 2012, período imediatamente anterior ao requerimento administrativo.\n\nConforme jurisprudência do STJ, a existência de vínculos urbanos no período de carência descaracteriza a condição de segurado especial, salvo se comprovada a concomitância das atividades.\n\nA autora não apresentou provas de que manteve a atividade rural concomitantemente aos vínculos urbanos.\n\nAnte o exposto, JULGO IMPROCEDENTE o pedido.\n\nSem custas e honorários (Lei 9.099/95).",
+      "dataJuntada": "2022-03-20",
+      "numeroPaginas": 4,
+      "nivelSigilo": 0
+    },
+    {
+      "id": "REC1",
+      "codigo": "RECURSO",
+      "tipo": "RECURSO INOMINADO",
+      "conteudo": "A recorrente interpõe o presente recurso inominado contra a sentença que julgou improcedente seu pedido de aposentadoria por idade rural.\n\nAlega que a sentença merece reforma pelos seguintes fundamentos:\n\n1. Os vínculos urbanos identificados no CNIS foram de curta duração e não descaracterizam a condição de trabalhadora rural, que foi exercida durante toda a vida.\n\n2. A jurisprudência da TNU admite a concessão do benefício quando comprovado o exercício de atividade rural por período equivalente à carência, ainda que não imediatamente anterior ao requerimento.\n\n3. Os documentos apresentados (certidão de casamento, notas fiscais, declaração sindical) constituem início de prova material suficiente.\n\n4. Requer a produção de prova testemunhal para comprovar o exercício da atividade rural.\n\nRequer: a) anulação da sentença para produção de prova testemunhal; b) subsidiariamente, a reforma da sentença para julgar procedente o pedido.",
+      "dataJuntada": "2022-04-10",
+      "numeroPaginas": 6,
+      "nivelSigilo": 0
+    }
+  ],
+  "movimentos": [
+    {
+      "data": "2021-09-09",
+      "codigo": 26,
+      "descricao": "Distribuído"
+    },
+    {
+      "data": "2021-09-10",
+      "codigo": 36,
+      "descricao": "Citação/Intimação"
+    },
+    {
+      "data": "2021-11-15",
+      "codigo": 85,
+      "descricao": "Juntada de contestação"
+    },
+    {
+      "data": "2022-03-20",
+      "codigo": 22,
+      "descricao": "Sentença proferida"
+    },
+    {
+      "data": "2022-04-10",
+      "codigo": 87,
+      "descricao": "Recurso interposto"
+    }
+  ],
+  "valorCausa": 50000.00,
+  "prioridade": ["IDOSO"],
+  "segredoJustica": false
+}
