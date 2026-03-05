@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 import clsx from 'clsx';
 import { useProcessoStore, type DocumentoInfo } from '../store';
 
-const ALLOWED_EXTENSIONS = ['.json', '.txt', '.md'];
+const ALLOWED_EXTENSIONS = ['.json', '.txt', '.md', '.pdf'];
 
 export default function FileUpload() {
   const { setProcesso, setLoading, setError } = useProcessoStore();
@@ -15,7 +15,7 @@ export default function FileUpload() {
   const handleFile = useCallback(
     async (file: File) => {
       if (!isAllowedFile(file.name)) {
-        setError('Formatos permitidos: JSON, TXT, MD');
+        setError('Formatos permitidos: JSON, TXT, MD, PDF');
         return;
       }
 
@@ -138,7 +138,7 @@ export default function FileUpload() {
 
         <input
           type="file"
-          accept=".json,.txt,.md"
+          accept=".json,.txt,.md,.pdf,application/pdf"
           onChange={handleInputChange}
           className="hidden"
           id="file-upload"
@@ -151,7 +151,7 @@ export default function FileUpload() {
         </label>
 
         <p className="text-xs text-gray-400">
-          Formatos aceitos: JSON (processo ou texto), TXT, MD
+          Formatos aceitos: PDF, JSON (processo ou texto), TXT, MD
         </p>
       </div>
     </div>

@@ -6,6 +6,7 @@
 import { Router } from 'express';
 import multer from 'multer';
 import { v4 as uuidv4 } from 'uuid';
+import { PDFParse } from 'pdf-parse';
 import type { ProcessoJudicial, PecaProcessual } from '../../../src/types/process.js';
 
 const router = Router();
@@ -35,8 +36,8 @@ const upload = multer({
   storage,
   limits: { fileSize: 10 * 1024 * 1024 }, // 10MB
   fileFilter: (_req, file, cb) => {
-    const allowedTypes = ['application/json', 'text/plain', 'text/markdown'];
-    const allowedExtensions = ['.json', '.txt', '.md'];
+    const allowedTypes = ['application/json', 'text/plain', 'text/markdown', 'application/pdf'];
+    const allowedExtensions = ['.json', '.txt', '.md', '.pdf'];
 
     const hasAllowedType = allowedTypes.includes(file.mimetype);
     const hasAllowedExtension = allowedExtensions.some(ext => file.originalname.endsWith(ext));
@@ -44,7 +45,7 @@ const upload = multer({
     if (hasAllowedType || hasAllowedExtension) {
       cb(null, true);
     } else {
-      cb(new Error('Apenas arquivos JSON, TXT ou MD são permitidos'));
+      cb(new Error('Apenas arquivos JSON, TXT, MD ou PDF são permitidos'));
     }
   },
 });
@@ -127,15 +128,50 @@ function extrairTextoDeJson(json: unknown): string | null {
  * POST /api/processos/upload
  * Upload de arquivo (JSON, TXT ou MD)
  */
-router.post('/upload', upload.single('file'), (req, res) => {
+router.post('/upload', upload.single('file'), async (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({ erro: 'Nenhum arquivo enviado' });
     }
 
-    const conteudo = req.file.buffer.toString('utf-8');
     const nomeArquivo = req.file.originalname;
     const id = uuidv4();
+
+    // Detectar e processar PDF
+    const isPdf = nomeArquivo.toLowerCase().endsWith('.pdf') || req.file.mimetype === 'application/pdf';
+
+    if (isPdf) {
+      let texto: string;
+      try {
+        const pdf = new PDFParse({ data: new Uint8Array(req.file.buffer) });
+        const result = await pdf.getText();
+        texto = result.text.trim();
+        await pdf.destroy();
+      } catch {
+        return res.status(400).json({ erro: 'Não foi possível extrair texto do PDF' });
+      }
+
+      if (!texto) {
+        return res.status(400).json({ erro: 'PDF não contém texto extraível (pode ser imagem/escaneado)' });
+      }
+
+      documentosUploadados.set(id, {
+        tipo: 'texto',
+        nome: nomeArquivo,
+        texto,
+        uploadedAt: new Date(),
+      });
+
+      return res.json({
+        id,
+        tipo: 'texto',
+        nome: nomeArquivo,
+        preview: texto.substring(0, 500) + (texto.length > 500 ? '...' : ''),
+        tamanho: texto.length,
+      });
+    }
+
+    const conteudo = req.file.buffer.toString('utf-8');
 
     // Detectar tipo de arquivo
     const isJson = nomeArquivo.endsWith('.json') || req.file.mimetype === 'application/json';
