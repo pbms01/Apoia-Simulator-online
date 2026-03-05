@@ -59,8 +59,8 @@ app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-// Servir arquivos estáticos em produção
-if (process.env.NODE_ENV === 'production') {
+// Servir arquivos estáticos em produção (não necessário no Vercel)
+if (process.env.NODE_ENV === 'production' && !process.env.VERCEL) {
   const clientDist = path.join(__dirname, '../client/dist');
   app.use(express.static(clientDist, {
     maxAge: '1d',
@@ -77,9 +77,12 @@ app.use((err: Error, _req: express.Request, res: express.Response, _next: expres
   res.status(500).json({ erro: err.message });
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Servidor APOIA rodando em http://localhost:${PORT}`);
-  console.log(`📡 API disponível em http://localhost:${PORT}/api`);
-});
+// Iniciar servidor apenas quando não estiver no Vercel
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`Servidor APOIA rodando em http://localhost:${PORT}`);
+    console.log(`API disponível em http://localhost:${PORT}/api`);
+  });
+}
 
 export default app;
