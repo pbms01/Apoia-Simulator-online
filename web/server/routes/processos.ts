@@ -6,7 +6,6 @@
 import { Router } from 'express';
 import multer from 'multer';
 import { v4 as uuidv4 } from 'uuid';
-import { getDocument } from 'pdfjs-dist/legacy/build/pdf.mjs';
 import type { ProcessoJudicial, PecaProcessual } from '../../../src/types/process.js';
 
 const router = Router();
@@ -136,49 +135,6 @@ router.post('/upload', upload.single('file'), async (req, res) => {
 
     const nomeArquivo = req.file.originalname;
     const id = uuidv4();
-
-    // Detectar e processar PDF
-    const isPdf = nomeArquivo.toLowerCase().endsWith('.pdf') || req.file.mimetype === 'application/pdf';
-
-    if (isPdf) {
-      let texto: string;
-      try {
-        const data = new Uint8Array(req.file.buffer);
-        const doc = await getDocument({ data, useSystemFonts: true }).promise;
-        const pages: string[] = [];
-        for (let i = 1; i <= doc.numPages; i++) {
-          const page = await doc.getPage(i);
-          const content = await page.getTextContent();
-          const pageText = content.items
-            .map((item: Record<string, unknown>) => (item.str as string) ?? '')
-            .join(' ');
-          if (pageText.trim()) pages.push(pageText);
-        }
-        await doc.destroy();
-        texto = pages.join('\n\n').trim();
-      } catch {
-        return res.status(400).json({ erro: 'Não foi possível extrair texto do PDF' });
-      }
-
-      if (!texto) {
-        return res.status(400).json({ erro: 'PDF não contém texto extraível (pode ser imagem/escaneado)' });
-      }
-
-      documentosUploadados.set(id, {
-        tipo: 'texto',
-        nome: nomeArquivo,
-        texto,
-        uploadedAt: new Date(),
-      });
-
-      return res.json({
-        id,
-        tipo: 'texto',
-        nome: nomeArquivo,
-        preview: texto.substring(0, 500) + (texto.length > 500 ? '...' : ''),
-        tamanho: texto.length,
-      });
-    }
 
     const conteudo = req.file.buffer.toString('utf-8');
 
