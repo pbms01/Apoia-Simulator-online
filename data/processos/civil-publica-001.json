@@ -1,0 +1,100 @@
+{
+  "numeroProcesso": "5062735-09.2023.4.02.5101",
+  "classeProcessual": "Ação Civil Pública",
+  "codigoClasse": 65,
+  "assuntos": [
+    {
+      "codigo": 10110,
+      "descricao": "Dano Ambiental",
+      "principal": true
+    },
+    {
+      "codigo": 10111,
+      "descricao": "Proteção ao Patrimônio Cultural",
+      "principal": false
+    }
+  ],
+  "dataAjuizamento": "2023-05-29",
+  "orgaoJulgador": {
+    "codigo": 5678,
+    "nome": "6ª Vara Federal do Rio de Janeiro"
+  },
+  "partes": [
+    {
+      "nome": "Ministério Público Federal",
+      "polo": "ATIVO",
+      "tipoPessoa": "JURIDICA"
+    },
+    {
+      "nome": "Companhia Caminho Aéreo Pão de Açúcar S.A.",
+      "polo": "PASSIVO",
+      "tipoPessoa": "JURIDICA",
+      "documento": "33.014.556/0001-96"
+    },
+    {
+      "nome": "Município do Rio de Janeiro",
+      "polo": "PASSIVO",
+      "tipoPessoa": "JURIDICA",
+      "documento": "42.498.733/0001-48"
+    },
+    {
+      "nome": "Instituto do Patrimônio Histórico e Artístico Nacional - IPHAN",
+      "polo": "PASSIVO",
+      "tipoPessoa": "JURIDICA",
+      "documento": "26.474.056/0001-71"
+    }
+  ],
+  "pecas": [
+    {
+      "id": "PET1",
+      "codigo": "PET1",
+      "tipo": "PETIÇÃO INICIAL",
+      "conteudo": "O MINISTÉRIO PÚBLICO FEDERAL propõe a presente AÇÃO CIVIL PÚBLICA com pedido de tutela de urgência em face da COMPANHIA CAMINHO AÉREO PÃO DE AÇÚCAR S.A., do MUNICÍPIO DO RIO DE JANEIRO e do INSTITUTO DO PATRIMÔNIO HISTÓRICO E ARTÍSTICO NACIONAL - IPHAN.\n\nDOS FATOS\n\nA primeira ré iniciou obras para instalação de uma tirolesa entre os morros do Pão de Açúcar e da Urca, resultando em mutilação da rocha e dano ao patrimônio cultural e geológico protegido.\n\nO IPHAN, ao tomar ciência da mutilação, não autuou a empresa, mas aprovou um projeto que ratificou a conduta. O MPF apurou que a empresa cortou rochas sem a devida autorização, configurando violação das normas de proteção ao patrimônio cultural.\n\nA UNESCO foi comunicada da situação e alertou sobre o risco de perda do título de patrimônio mundial.\n\nDOS FUNDAMENTOS\n\nO MPF fundamenta sua ação na violação do art. 216 da Constituição, do Decreto-Lei 25/37 e da Lei Federal 9.605/98. A mutilação do patrimônio geológico é irreversível e a continuidade das obras pode levar à inclusão do sítio na lista de patrimônio mundial em perigo.\n\nDOS PEDIDOS\n\na) Concessão de tutela de urgência para suspender os atos administrativos do IPHAN que autorizaram as obras;\nb) Determinação para que a empresa se abstenha de realizar cortes ou perfurações nas rochas;\nc) Apresentação de plano de recuperação da área degradada em 60 dias;\nd) Proposta de Plano Diretor ou Plano de Gestão em 120 dias;\ne) Julgamento procedente da demanda, anulando os atos administrativos impugnados e condenando os réus por danos ao patrimônio cultural, em valor não inferior a R$ 50.000.000,00.",
+      "dataJuntada": "2023-05-29",
+      "numeroPaginas": 45,
+      "nivelSigilo": 0
+    },
+    {
+      "id": "CONT1",
+      "codigo": "CONT",
+      "tipo": "CONTESTAÇÃO",
+      "conteudo": "A COMPANHIA CAMINHO AÉREO PÃO DE AÇÚCAR S.A. apresenta CONTESTAÇÃO à ação civil pública.\n\nPRELIMINARMENTE\n\nSustenta que a legitimidade passiva do Município do Rio de Janeiro e da empresa deve ser reconhecida, uma vez que não é o único órgão responsável pela autorização das intervenções no bem tombado.\n\nNO MÉRITO\n\nArgumenta que a autorização para a obra da tirolesa foi concedida com base em pareceres técnicos favoráveis e que as intervenções não causam danos ao patrimônio cultural, tendo sido aprovadas por diversos órgãos competentes, incluindo o Conselho Municipal de Proteção do Patrimônio Cultural e a Secretaria Municipal de Desenvolvimento Econômico.\n\nDestaca que os cortes de rocha realizados são pontuais e não configuram mutilação do bem tombado, pois ocorrem em áreas já alteradas.\n\nRequer a inclusão do Município do Rio de Janeiro e da empresa no polo passivo, a improcedência dos pedidos.",
+      "dataJuntada": "2023-08-15",
+      "numeroPaginas": 32,
+      "nivelSigilo": 0
+    },
+    {
+      "id": "DECIS1",
+      "codigo": "DESPADEC",
+      "tipo": "DECISÃO",
+      "conteudo": "DECISÃO\n\nTrata-se de pedido de tutela de urgência formulado pelo MPF visando à suspensão das obras de instalação de tirolesa nos morros do Pão de Açúcar e da Urca.\n\nPresentes os requisitos do art. 300 do CPC. A probabilidade do direito decorre da documentação que demonstra a realização de cortes em rocha tombada sem o devido procedimento administrativo. O perigo de dano é evidente, considerando a natureza irreversível dos danos ao patrimônio geológico.\n\nPosto isso, DEFIRO A TUTELA DE URGÊNCIA para determinar:\n\n1. A imediata suspensão das obras de instalação da tirolesa;\n2. A proibição de novos cortes ou perfurações nas rochas;\n3. Multa diária de R$ 100.000,00 em caso de descumprimento.\n\nCite-se os réus.",
+      "dataJuntada": "2023-06-05",
+      "numeroPaginas": 5,
+      "nivelSigilo": 0
+    }
+  ],
+  "movimentos": [
+    {
+      "data": "2023-05-29",
+      "codigo": 26,
+      "descricao": "Distribuído"
+    },
+    {
+      "data": "2023-06-05",
+      "codigo": 11010,
+      "descricao": "Tutela de urgência deferida"
+    },
+    {
+      "data": "2023-06-10",
+      "codigo": 36,
+      "descricao": "Citação realizada"
+    },
+    {
+      "data": "2023-08-15",
+      "codigo": 85,
+      "descricao": "Juntada de contestação"
+    }
+  ],
+  "valorCausa": 50000000.00,
+  "segredoJustica": false
+}

@@ -1,0 +1,60 @@
+{
+  "numeroProcesso": "0000001-00.2024.4.02.5101",
+  "classeProcessual": "Procedimento Comum Cível",
+  "codigoClasse": 100,
+  "assuntos": [
+    {
+      "codigo": 1000,
+      "descricao": "Assunto de Teste",
+      "principal": true
+    }
+  ],
+  "dataAjuizamento": "2024-01-01",
+  "orgaoJulgador": {
+    "codigo": 1,
+    "nome": "1ª Vara Federal de Teste"
+  },
+  "partes": [
+    {
+      "nome": "Autor Teste da Silva",
+      "polo": "ATIVO",
+      "tipoPessoa": "FISICA",
+      "documento": "111.222.333-44"
+    },
+    {
+      "nome": "Réu Teste Ltda",
+      "polo": "PASSIVO",
+      "tipoPessoa": "JURIDICA",
+      "documento": "11.222.333/0001-44"
+    }
+  ],
+  "pecas": [
+    {
+      "id": "PET1",
+      "codigo": "PET1",
+      "tipo": "PETIÇÃO INICIAL",
+      "conteudo": "Esta é uma petição inicial de teste para fins de validação do simulador APOIA.",
+      "dataJuntada": "2024-01-01",
+      "numeroPaginas": 5,
+      "nivelSigilo": 0
+    },
+    {
+      "id": "CONT1",
+      "codigo": "CONT",
+      "tipo": "CONTESTAÇÃO",
+      "conteudo": "Esta é uma contestação de teste para fins de validação do simulador APOIA.",
+      "dataJuntada": "2024-02-01",
+      "numeroPaginas": 3,
+      "nivelSigilo": 0
+    }
+  ],
+  "movimentos": [
+    {
+      "data": "2024-01-01",
+      "codigo": 26,
+      "descricao": "Distribuído"
+    }
+  ],
+  "valorCausa": 10000.00,
+  "segredoJustica": false
+}
