@@ -1,8 +1,25 @@
 import { useCallback, useState } from 'react';
 import clsx from 'clsx';
+import * as pdfjsLib from 'pdfjs-dist/legacy/build/pdf.mjs';
 import { useProcessoStore, type DocumentoInfo } from '../store';
 
 const ALLOWED_EXTENSIONS = ['.json', '.txt', '.md', '.pdf'];
+
+async function extractPdfText(file: File): Promise<string> {
+  const buffer = await file.arrayBuffer();
+  const doc = await pdfjsLib.getDocument({ data: new Uint8Array(buffer) }).promise;
+  const pages: string[] = [];
+  for (let i = 1; i <= doc.numPages; i++) {
+    const page = await doc.getPage(i);
+    const content = await page.getTextContent();
+    const text = content.items
+      .map((item: Record<string, unknown>) => (item.str as string) ?? '')
+      .join(' ');
+    if (text.trim()) pages.push(text);
+  }
+  await doc.destroy();
+  return pages.join('\n\n').trim();
+}
 
 export default function FileUpload() {
   const { setProcesso, setLoading, setError } = useProcessoStore();
@@ -23,13 +40,27 @@ export default function FileUpload() {
       setError(null);
 
       try {
-        const formData = new FormData();
-        formData.append('file', file);
+        const isPdf = file.name.toLowerCase().endsWith('.pdf');
+        let response: Response;
 
-        const response = await fetch('/api/processos/upload', {
-          method: 'POST',
-          body: formData,
-        });
+        if (isPdf) {
+          const texto = await extractPdfText(file);
+          if (!texto) {
+            throw new Error('PDF não contém texto extraível (pode ser imagem/escaneado)');
+          }
+          response = await fetch('/api/processos/texto', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ texto, nome: file.name }),
+          });
+        } else {
+          const formData = new FormData();
+          formData.append('file', file);
+          response = await fetch('/api/processos/upload', {
+            method: 'POST',
+            body: formData,
+          });
+        }
 
         const data = await response.json();
 
